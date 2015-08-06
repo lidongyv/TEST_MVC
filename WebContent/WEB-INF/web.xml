@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+  <filter>
+    <filter-name>charset_filter</filter-name>
+    <filter-class>web.mvc.util.CharSetFilter</filter-class>
+    <init-param>
+      <param-name>charset</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>charset_filter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>Core_Controller</servlet-name>
+    <servlet-class>web.mvc.controller.CoreControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Core_Controller</servlet-name>
+    <url-pattern>*.mis</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>web.mvc.listener.LoginListener</listener-class>
+  </listener>
+</web-app>
